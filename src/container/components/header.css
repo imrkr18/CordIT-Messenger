@@ -1,0 +1,64 @@
+html, body{
+    overflow-x: hidden;
+    margin: 0%;
+    padding: 0%;
+}
+
+.header{
+    width: 100%;
+    position: relative;
+    height: 60px;
+    display: flex;
+    background: #15bff9;
+    justify-content: space-between ;
+    box-sizing: border-box;
+}
+
+.logo{
+    font-size: 20px;
+    color: black;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin: 18px;
+    text-shadow: 0 0;
+}
+.logo>a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu{
+    display: flex;
+    margin: 15px;
+    list-style-type: none;
+}
+
+.menu > li > a{
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-shadow: 0 0;
+    text-decoration: none;
+}
+
+.leftmenu{
+    display: flex;
+    color: white;
+    margin: 20px;
+}
+
+.leftmenu > li{
+    margin: 0px 10px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.leftmenu > li > a{
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.leftmenu > li > a:hover, .leftmenu > li > a:focus{
+    font-weight: bold;
+}

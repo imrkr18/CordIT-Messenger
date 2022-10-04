@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// eslint-disable-next-line
+import firebase from 'firebase/compat/app';
+import * as ReactDOM  from 'react-dom/client'
+import { initializeApp } from "firebase/app";
+import App from './App'
+import { Provider } from 'react-redux'
+import store from './store/store'
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyCSOh8DI-dYg1uf_GSHqoOWciXbDQdBtWo",
+    authDomain: "cordit-messenger.firebaseapp.com",
+    projectId: "cordit-messenger",
+    storageBucket: "cordit-messenger.appspot.com",
+    messagingSenderId: "789713358438",
+    appId: "1:789713358438:web:f90a4f633563462e75e7a7",
+    measurementId: "G-7GMVD30ZML"
+};
+// eslint-disable-next-line
+initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
+
+window.store = store;
+
+const container = document.getElementById('root')
+const root = ReactDOM.createRoot(container)
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <Provider store={store}>
+        <App/> 
+    </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

@@ -1,0 +1,120 @@
+.container{
+    display:flex;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 60px);
+    overflow: hidden;
+}
+
+.userList{
+    width: 20%;
+    height: 100%;
+    overflow-x: hidden;
+    border-right: 2px solid rgb(162, 162, 162);
+}
+
+.displayName{
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.displayName.active{
+    background:#fff ;
+}
+
+.displayName .displayPic{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.displayName .displayPic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chatArea{
+    width: 80%;   
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.chatHeader{
+    position: fixed;
+    width: 80%;
+    height: 40px;
+    background: #e2e0e0;
+    text-align: center;
+    line-height: 40px;
+    color: #000;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.chatControl{
+    display: flex;
+    position: fixed;
+    width: 79.98%;
+    height: 40px;
+    bottom: 0;
+    margin-bottom: 2px;
+}
+
+.chatControl textarea{
+    width: 93%;
+    border: 2px solid rgb(124, 122, 122);
+    border-radius: 3px;
+    margin: 2px;
+    padding: 2px;
+    font-size: 1.08rem;
+    font-family: sans-serif;
+}
+
+.chatControl button{
+    width: 7%;
+    border: 1px solid rgb(84,193,235);
+    border-radius: 6px;
+    margin:2px 3.5px 2px 0.5px;
+    font-weight: 500;
+    font-size: 0.96rem;
+    cursor: pointer;
+    background-color:rgb(84, 193, 235); ;
+}
+
+
+.messageStyle{
+    display: inline-block;
+    background: skyblue;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.messageSection{
+    height: calc(100% - 90px);
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    top: 40px;  
+}
+
+.onlineStatus{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #16e316;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 0 #16e316;
+    margin-top: 8px;
+}
+
+.onlineStatus.off{
+    background: red;
+    box-shadow: 0 0 0 0;
+}
