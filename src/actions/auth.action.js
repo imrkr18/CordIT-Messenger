@@ -17,7 +17,7 @@ export const signup = (user) => {
         console.log(auth)
         createUserWithEmailAndPassword(auth, user.email, user.password)
         .then(data => {
-            console.log(data);
+            // console.log(data);
             const name = `${user.firstName} ${user.lastName}`
             updateProfile(auth.currentUser, {
                 displayName: name,
@@ -41,7 +41,7 @@ export const signup = (user) => {
                         email : user.email    
                     }
                     localStorage.setItem('user', JSON.stringify(loggedInuser));
-                    console.log("user logged in successfully");
+                    alert("user logged in successfully");
 
                     dispatch({
                         type : `${authConstants.USER_LOGIN}_SUCCESS`,
@@ -51,7 +51,8 @@ export const signup = (user) => {
                     })
                 })
                 .catch((error)=>{
-                    console.log(error);
+                    // console.log(error);
+                    alert(error.message)
                     dispatch({
                         type : `${authConstants.USER_LOGIN}_FAILURE`,
                         payload : {
@@ -62,7 +63,8 @@ export const signup = (user) => {
             })
         })
         .catch(error => {
-            console.log(error);
+            alert(error.message);
+            // console.log(error);
         });
     }
 }
@@ -78,8 +80,9 @@ export const signin = (user) => {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, user.email, user.password)
         .then((data) => {
-            console.log(data);
-
+            // console.log(data);
+            alert("user logged in successfully");
+            
             const name = data.user.displayName.split(" ")
             const firstName = name[0]
             const lastName = name[1]
@@ -92,20 +95,20 @@ export const signin = (user) => {
             }
             const db = getFirestore();
             const onlineRef = doc(db, "users", data.user.uid);
-
+            
             updateDoc(onlineRef,{
                 isOnline : true,
             })
-
+            
             localStorage.setItem('user', JSON.stringify(loggedInuser));
             dispatch({
                 type : `${authConstants.USER_LOGIN}_SUCCESS`,
                 payload : { user : loggedInuser}
             })
-
+            
         })
         .catch(error => {
-            console.log(error);
+            alert(error.message);
             dispatch({
                 type : `${authConstants.USER_LOGIN}_FAILURE`,
                 payload:{ error }
@@ -152,12 +155,12 @@ export const logout = (uid) => {
             signOut(auth)
             .then(()=>{
                 localStorage.clear();
+                alert("You are logged out successfully")
                 dispatch({
                     type : `${authConstants.USER_LOGOUT}_SUCCESS`,
                 });
             })
             .catch(error => {
-                console.log(error);
                 dispatch({
                     type : `${authConstants.USER_LOGOUT}_FAILURE`,
                     payload:{ error }
@@ -165,7 +168,8 @@ export const logout = (uid) => {
             })
         })
         .catch(error=>{
-            console.log(error);
+            localStorage.clear()
+            alert("You are logged out. Please Refresh your browser.");
         })
 
         

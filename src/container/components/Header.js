@@ -33,7 +33,7 @@ const Header = () => {
                 auth.authenticated ? 
                 <li>
                     <Link to={'#'} onClick={()=>{
-                        console.log(auth.uid)
+                        // console.log(auth.uid)
                         dispatch(logout(auth.uid))
                     }}>Logout</Link>
                 </li> : null

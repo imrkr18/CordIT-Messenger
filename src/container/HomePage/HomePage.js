@@ -35,7 +35,6 @@ const HomePage = () => {
   const [ chatUser, setChatuser ] = useState('');
   const [ message, setMessage ] = useState('');
   const [ userUid, setUserUid ] = useState(null);
-
   useEffect(() => {
     dispatch(getRealtimeUsers(auth.uid))
     // eslint-disable-next-line
@@ -65,7 +64,7 @@ const HomePage = () => {
       })
     }
 
-    console.log(msgObj)
+    // console.log(msgObj)
   }
   
   
@@ -99,6 +98,7 @@ const HomePage = () => {
               
               chatStarted?
               user.conversations?.map(conv => 
+                
                 <div style={{textAlign : conv.user_uid1===auth.uid ? 'right' : 'left'}}>
                   <p className="messageStyle">{conv.message}</p>
                 </div>

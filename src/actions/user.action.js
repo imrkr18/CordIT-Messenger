@@ -14,20 +14,19 @@ export const getRealtimeUsers = (uid) =>{
         const q = query(collection(db, "users"));
         onSnapshot(q, (querySnapshot) => {
             const users = [];
-            
-            querySnapshot.forEach((doc) => {
+            querySnapshot.forEach(function(doc){
                 if(doc.data().uid !== uid ){
                     users.push(doc.data());
                 }
             });
-            console.log(users, uid);
+            // console.log(users, uid);
 
             dispatch({
                 type: `${userConstants.GET_REALTIME_USERS}_SUCCESS`,
                 payload : { users }
             })
         });
-
+        return q;
     }
 }
 
@@ -44,7 +43,7 @@ export const updateMessage = (msgObj) => {
                 
             })
             .then((data)=>{
-                console.log(data)
+                console.log("updated")
 
             })
             .catch(e =>{
@@ -62,7 +61,7 @@ export const getRealTimeConversations = (user) => {
     return async dispatch => {
         const db = getFirestore();
         const q = query(collection(db, 'conversation'), orderBy('createdAt'),where('user_uid1','in',[user.uid1, user.uid2]));
-        console.log(q)
+        // console.log(q)
         onSnapshot(q, (querySnapshot)=>{
 
             const conversations = []
@@ -79,7 +78,7 @@ export const getRealTimeConversations = (user) => {
                 type : userConstants.GET_REALTIME_MESSAGES,
                 payload : { conversations }
             })
-            console.log(conversations)
+            // console.log(conversations)
         })
     }
 }
